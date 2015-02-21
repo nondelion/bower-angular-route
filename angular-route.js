@@ -560,7 +560,7 @@ function $RouteProvider(){
      */
     function parseRoute() {
       // Match a route
-      var params, match, locationPath;
+      var params, match, locationPath, currentPath;
       angular.forEach(routes, function(route, path) {
         currentPath = '/'+location.pathname.split('/').slice(4, location.pathname.length).join('');
         locationPath = window.history && window.history.pushState ? $location.path() : currentPath;
