@@ -562,7 +562,8 @@ function $RouteProvider(){
       // Match a route
       var params, match, locationPath;
       angular.forEach(routes, function(route, path) {
-        locationPath = window.history && window.history.pushState ? $location.path() : location.pathname;
+        currentPath = '/'+location.pathname.split('/').slice(4, location.pathname.length).join('');
+        locationPath = window.history && window.history.pushState ? $location.path() : currentPath;
         if (!match && (params = switchRouteMatcher(locationPath, route))) {
           match = inherit(route, {
             params: angular.extend({}, $location.search(), params),
