@@ -438,7 +438,9 @@ function $RouteProvider(){
           reload: function() {
             forceReload = true;
             $rootScope.$evalAsync(updateRoute);
-          }
+          },
+
+          notify: true
         };
 
     $rootScope.$on('$locationChangeSuccess', updateRoute);
@@ -480,6 +482,7 @@ function $RouteProvider(){
     }
 
     function updateRoute() {
+      if (!$route.notify) return;
       var next = parseRoute(),
           last = $route.current;
 
